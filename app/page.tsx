@@ -1,7 +1,7 @@
 const proofPoints = [
-  { value: "6 years", label: "Software engineering" },
+  { value: "6+ years", label: "Production engineering" },
   { value: "Maritime + IoT", label: "Robotics included" },
-  { value: "Melbourne", label: "Australia" },
+  { value: "Global systems", label: "Built from Melbourne" },
 ];
 
 const projects = [
@@ -148,16 +148,9 @@ export default function Home() {
             <a href="#contact">Contact</a>
           </nav>
 
-          <div className="theme-switch" aria-label="Portfolio design">
-            <span className="theme-label">Edition</span>
-            <button
-              type="button"
-              aria-pressed="true"
-              disabled
-            >
-              Command
-            </button>
-          </div>
+          <a className="header-contact" href="#contact">
+            Contact <span aria-hidden="true">↘</span>
+          </a>
         </header>
 
         <div className="hero-grid shell">
@@ -263,8 +256,10 @@ export default function Home() {
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <div className="project-outcome">
-                <span>Contribution</span>
-                <p>{project.outcome}</p>
+                <span>Engineering impact</span>
+                <p>
+                  <strong>{project.outcome}</strong>
+                </p>
               </div>
               <ul aria-label={`${project.title} technologies`}>
                 {project.tags.map((tag) => (
@@ -304,11 +299,14 @@ export default function Home() {
                 </div>
                 <div className="timeline-detail">
                   <p>{item.summary}</p>
-                  <ul>
-                    {item.highlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
+                  <div className="timeline-highlights">
+                    <span>Key work</span>
+                    <ul>
+                      {item.highlights.map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </article>
             ))}
@@ -393,27 +391,55 @@ export default function Home() {
             <br />
             dependable.
           </h2>
-          <div>
+          <div className="contact-panel">
             <p>
               Based in Melbourne and open to strong engineering opportunities
               across Australia. Remote, hybrid and relocation conversations are
               welcome.
             </p>
-            <a
-              className="button button-primary contact-button"
-              href="https://github.com/nedu96"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Connect on GitHub <span aria-hidden="true">↗</span>
-            </a>
+            <div className="contact-links" aria-label="Contact details">
+              <a href="tel:+61402429024">
+                <span>Mobile</span>
+                <strong>0402 429 024</strong>
+                <b aria-hidden="true">Call ↗</b>
+              </a>
+              <a href="mailto:nedu1996@gmail.com">
+                <span>Email</span>
+                <strong>nedu1996@gmail.com</strong>
+                <b aria-hidden="true">Write ↗</b>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/nedunchezia-pandia-rajan"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>LinkedIn</span>
+                <strong>nedunchezia-pandia-rajan</strong>
+                <b aria-hidden="true">Open ↗</b>
+              </a>
+              <a
+                href="https://github.com/nedu96"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>GitHub</span>
+                <strong>github.com/nedu96</strong>
+                <b aria-hidden="true">Open ↗</b>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       <footer className="site-footer shell">
         <span>© 2026 Nedu Anandarajan</span>
-        <span>Software Engineer · Melbourne</span>
+        <a
+          href="https://www.linkedin.com/in/nedunchezia-pandia-rajan"
+          target="_blank"
+          rel="noreferrer"
+        >
+          LinkedIn ↗
+        </a>
         <a href="#home">Back to top ↑</a>
       </footer>
     </main>

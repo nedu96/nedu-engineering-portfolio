@@ -12,7 +12,8 @@ Live site: [nedu-engineering-portfolio.nedu1996.chatgpt.site](https://nedu-engin
 - **Editorial Engineer** — a warm editorial layout inspired by engineering
   notebooks, signal plots and system diagrams.
 
-Visitors can switch between both visual modes without leaving the page.
+The `command` and `editorial` branches each contain one focused visual edition.
+The default `main` branch uses the Command Centre edition.
 
 ## Featured experience
 
@@ -35,3 +36,9 @@ npm run dev
 
 The site is built with Next.js, React, TypeScript and CSS. It is responsive,
 keyboard accessible and respects reduced-motion preferences.
+
+## Contact
+
+- Mobile: [0402 429 024](tel:+61402429024)
+- Email: [nedu1996@gmail.com](mailto:nedu1996@gmail.com)
+- LinkedIn: [linkedin.com/in/nedunchezia-pandia-rajan](https://www.linkedin.com/in/nedunchezia-pandia-rajan)
