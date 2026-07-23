@@ -56,6 +56,10 @@ function makeStatic(html) {
       "",
     )
     .replace("</head>", `${socialMetadata}</head>`)
+    .replace(
+      /\/[^"'()\s<>]*?\.vinext\/fonts\//g,
+      "/assets/_vinext_fonts/",
+    )
     .replaceAll('href="/', 'href="./')
     .replaceAll('src="/', 'src="./')
     .replaceAll("url(/assets/", "url(./assets/");
@@ -98,6 +102,14 @@ async function validateOutput() {
 
   if (/(?:href|src)="\/(?!\/)/i.test(html)) {
     throw new Error("Static output contains a root-relative asset URL.");
+  }
+
+  if (
+    html.includes(".vinext/fonts") ||
+    html.includes("/workspace/") ||
+    html.includes("/home/runner/")
+  ) {
+    throw new Error("Static output contains a build-machine asset path.");
   }
 }
 
