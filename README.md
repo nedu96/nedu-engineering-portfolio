@@ -3,7 +3,7 @@
 A portfolio focused on real-time systems, maritime technology, industrial IoT,
 backend engineering and distributed platforms.
 
-Live site: [nedu-engineering-portfolio.nedu1996.chatgpt.site](https://nedu-engineering-portfolio.nedu1996.chatgpt.site)
+Live site: [nedu96.github.io/nedu-engineering-portfolio](https://nedu96.github.io/nedu-engineering-portfolio/)
 
 ## Portfolio modes
 
@@ -36,6 +36,12 @@ npm run dev
 
 The site is built with Next.js, React, TypeScript and CSS. It is responsive,
 keyboard accessible and respects reduced-motion preferences.
+
+## GitHub Pages
+
+Pushes to `main` automatically build a static Command Centre edition and deploy
+it with GitHub Pages. The generated site is published by
+`.github/workflows/deploy-pages.yml`.
 
 ## Contact
 
