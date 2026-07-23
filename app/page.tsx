@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 const proofPoints = [
   { value: "6 years", label: "Software engineering" },
   { value: "Maritime + IoT", label: "Robotics included" },
@@ -132,7 +128,7 @@ const capabilities = [
 type Theme = "command" | "editorial";
 
 export default function Home() {
-  const [theme, setTheme] = useState<Theme>("command");
+  const theme: Theme = "command";
 
   return (
     <main className="portfolio" data-theme={theme}>
@@ -153,20 +149,13 @@ export default function Home() {
           </nav>
 
           <div className="theme-switch" aria-label="Portfolio design">
-            <span className="theme-label">View</span>
+            <span className="theme-label">Edition</span>
             <button
               type="button"
-              aria-pressed={theme === "command"}
-              onClick={() => setTheme("command")}
+              aria-pressed="true"
+              disabled
             >
               Command
-            </button>
-            <button
-              type="button"
-              aria-pressed={theme === "editorial"}
-              onClick={() => setTheme("editorial")}
-            >
-              Editorial
             </button>
           </div>
         </header>
