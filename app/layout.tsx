@@ -19,9 +19,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Nedu Anandarajan | Software Engineer",
+  title: "Nedu Anandarajan | Real-Time & Systems Software Engineer",
   description:
-    "Software engineer building reliable maritime, IoT and distributed systems with Java, Python and real-time integrations.",
+    "Software engineer building reliable maritime, industrial IoT, robotics and distributed systems with Java, Python, ROS and real-time integrations.",
   other: {
     "codex-preview": "development",
   },
