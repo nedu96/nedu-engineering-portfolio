@@ -86,22 +86,22 @@ button {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   width: max-content;
-  font-size: 16px;
-  font-weight: 650;
-  letter-spacing: -0.015em;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .brand-mark {
-  width: 30px;
+  width: 36px;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
   color: var(--accent);
   border: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 nav {
@@ -1264,7 +1264,14 @@ h1 em {
   }
 
   .brand {
-    font-size: 12px;
+    gap: 10px;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-mark {
+    width: 32px;
+    font-size: 13px;
   }
 
   .portfolio[data-theme="editorial"] .brand {
