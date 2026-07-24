@@ -276,7 +276,6 @@ export default function Home() {
                   aria-describedby="signal-readout"
                   onClick={() => setActiveSignalIndex(index)}
                   onFocus={() => setActiveSignalIndex(index)}
-                  onMouseEnter={() => setActiveSignalIndex(index)}
                 >
                   <span className="radar-node-core" aria-hidden="true" />
                   <span className="radar-node-label">{signal.label}</span>
