@@ -1,7 +1,64 @@
+"use client";
+
+import { useState } from "react";
+
 const proofPoints = [
   { value: "6+ years", label: "Production engineering" },
   { value: "Maritime + IoT", label: "Robotics included" },
   { value: "Global systems", label: "Built from Melbourne" },
+];
+
+const systemSignals = [
+  {
+    number: "01",
+    label: "Berthing motion",
+    title: "Real-time berthing intelligence",
+    summary:
+      "Turns high-frequency laser measurements into stable vessel states and clear operator guidance.",
+    flow: ["Laser measurements", "Java state engine", "Operator view"],
+    proof: "250 ms data cadence",
+    technologies: ["Java", "Spring Boot", "WebSockets"],
+  },
+  {
+    number: "02",
+    label: "Sensor gateway",
+    title: "Industrial multi-sensor gateway",
+    summary:
+      "Normalises marine equipment data across Modbus, TCP sockets, serial links and custom formats.",
+    flow: ["Field sensors", "Protocol adapters", "Platform services"],
+    proof: "5 sensor families",
+    technologies: ["Modbus", "TCP / RS-485", "Python"],
+  },
+  {
+    number: "03",
+    label: "Vessel traffic",
+    title: "Vessel traffic data exchange",
+    summary:
+      "Receives, reassembles and decodes live navigation messages before exchanging vessel targets with external systems.",
+    flow: ["AIS / NMEA", "Stream decoder", "IVEF exchange"],
+    proof: "Live target processing",
+    technologies: ["AIS", "NMEA 0183", "IVEF"],
+  },
+  {
+    number: "04",
+    label: "Robot lab",
+    title: "Spatial robotics environment",
+    summary:
+      "Converts spatial data into repeatable Gazebo worlds for ROS development with Fetch and Pepper robots.",
+    flow: ["Spatial data", "Gazebo world", "ROS robot spawn"],
+    proof: "Fetch + Pepper",
+    technologies: ["ROS", "Gazebo", "AWS RoboMaker"],
+  },
+  {
+    number: "05",
+    label: "Edge telemetry",
+    title: "Connected coffee telemetry",
+    summary:
+      "Retrieves commercial coffee-machine data at the edge and publishes it to a clear operational dashboard.",
+    flow: ["Coffee machine", "Raspberry Pi", "Django dashboard"],
+    proof: "Edge-to-dashboard delivery",
+    technologies: ["Python", "Raspberry Pi", "AWS / Django"],
+  },
 ];
 
 const projects = [
@@ -129,6 +186,8 @@ type Theme = "command" | "editorial";
 
 export default function Home() {
   const theme: Theme = "command";
+  const [activeSignalIndex, setActiveSignalIndex] = useState(0);
+  const activeSignal = systemSignals[activeSignalIndex];
 
   return (
     <main className="portfolio" data-theme={theme}>
@@ -188,32 +247,88 @@ export default function Home() {
 
           <div
             className="system-visual"
-            aria-label={
-              theme === "command"
-                ? "A stylised live maritime system map"
-                : "A stylised engineering notebook of sensor data and system flow"
-            }
+            aria-label="Interactive map of five engineering systems"
           >
-            <img
-              className="command-art"
-              src="/radar-system.webp"
-              alt=""
-              aria-hidden="true"
-            />
-            <img
-              className="editorial-art"
-              src="/editorial-system.webp"
-              alt=""
-              aria-hidden="true"
-            />
-            <div className="telemetry-card">
-              <div>
-                <span className="telemetry-dot" aria-hidden="true" />
-                <span>System status</span>
-              </div>
-              <strong>LIVE</strong>
-              <small>42 data streams connected</small>
+            <div className="radar-stage">
+              <img
+                className="command-art"
+                src="/radar-system.webp"
+                alt=""
+                aria-hidden="true"
+              />
+              <img
+                className="editorial-art"
+                src="/editorial-system.webp"
+                alt=""
+                aria-hidden="true"
+              />
+              <span className="radar-sweep" aria-hidden="true" />
+
+              {systemSignals.map((signal, index) => (
+                <button
+                  className={`radar-node radar-node-${index + 1}${
+                    activeSignalIndex === index ? " is-active" : ""
+                  }`}
+                  key={signal.number}
+                  type="button"
+                  aria-label={`Inspect ${signal.title}`}
+                  aria-pressed={activeSignalIndex === index}
+                  aria-describedby="signal-readout"
+                  onClick={() => setActiveSignalIndex(index)}
+                  onFocus={() => setActiveSignalIndex(index)}
+                  onMouseEnter={() => setActiveSignalIndex(index)}
+                >
+                  <span className="radar-node-core" aria-hidden="true" />
+                  <span className="radar-node-label">{signal.label}</span>
+                </button>
+              ))}
             </div>
+
+            <aside
+              className="signal-readout"
+              id="signal-readout"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <div className="signal-readout-header">
+                <span>
+                  <i aria-hidden="true" />
+                  Selected system
+                </span>
+                <span>
+                  {activeSignal.number} / 0{systemSignals.length}
+                </span>
+              </div>
+              <h2>{activeSignal.title}</h2>
+              <p>{activeSignal.summary}</p>
+              <div
+                className="signal-flow"
+                aria-label={`System flow: ${activeSignal.flow.join(" to ")}`}
+              >
+                {activeSignal.flow.map((step, index) => (
+                  <span key={step}>
+                    {step}
+                    {index < activeSignal.flow.length - 1 && (
+                      <b aria-hidden="true">→</b>
+                    )}
+                  </span>
+                ))}
+              </div>
+              <div className="signal-proof">
+                <span>Proof point</span>
+                <strong>{activeSignal.proof}</strong>
+              </div>
+              <ul aria-label={`${activeSignal.title} technologies`}>
+                {activeSignal.technologies.map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
+              </ul>
+            </aside>
+
+            <p className="system-hint">
+              <span aria-hidden="true">◎</span>
+              Select a signal to inspect the project flow
+            </p>
           </div>
         </div>
 
