@@ -45,12 +45,6 @@ function makeStatic(html) {
   ].join("");
 
   return html
-    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
-    .replace(
-      /<link\b(?=[^>]*\brel=["']modulepreload["'])[^>]*\/?>/gi,
-      "",
-    )
-    .replace(/\sdata-rsc-css-href="[^"]*"/gi, "")
     .replace(
       /<meta\b(?=[^>]*\bname=["']codex-preview["'])[^>]*\/?>/gi,
       "",
@@ -60,27 +54,20 @@ function makeStatic(html) {
       /\/[^"'()\s<>]*?\.vinext\/fonts\//g,
       "/assets/_vinext_fonts/",
     )
+    .replaceAll("/assets/", "./assets/")
     .replaceAll('href="/', 'href="./')
-    .replaceAll('src="/', 'src="./')
-    .replaceAll("url(/assets/", "url(./assets/");
+    .replaceAll('src="/', 'src="./');
 }
 
 async function removeRuntimeFiles() {
   await rm(join(outputDirectory, ".vite"), { recursive: true, force: true });
   await rm(join(outputDirectory, ".assetsignore"), { force: true });
   await rm(join(outputDirectory, "_headers"), { force: true });
-
-  const assetsDirectory = join(outputDirectory, "assets");
-  const assets = await readdir(assetsDirectory, { withFileTypes: true });
-  await Promise.all(
-    assets
-      .filter((asset) => asset.isFile() && asset.name.endsWith(".js"))
-      .map((asset) => rm(join(assetsDirectory, asset.name))),
-  );
 }
 
 async function validateOutput() {
   const html = await readFile(join(outputDirectory, "index.html"), "utf8");
+  const assets = await readdir(join(outputDirectory, "assets"));
   const checks = [
     ["portfolio title", /Nedu Anandarajan/],
     ["robotics work", /ROS programming for Fetch and Pepper/],
@@ -88,6 +75,11 @@ async function validateOutput() {
     ["mobile number", /0402 429 024/],
     ["LinkedIn profile", /linkedin\.com\/in\/nedunchezia-pandia-rajan/],
     ["relative assets", /href="\.\/assets\//],
+    [
+      "hydration entry",
+      /<script id="_R_">import\("\.\/assets\/[^"]+\.js"\)<\/script>/,
+    ],
+    ["runtime module", /rel="modulepreload" href="\.\/assets\/[^"]+\.js"/],
   ];
 
   for (const [label, pattern] of checks) {
@@ -96,11 +88,16 @@ async function validateOutput() {
     }
   }
 
-  if (/<script\b/i.test(html)) {
-    throw new Error("Static output still contains a runtime script.");
+  if (!assets.some((asset) => asset.endsWith(".js"))) {
+    throw new Error("Static output is missing JavaScript runtime assets.");
   }
 
-  if (/(?:href|src)="\/(?!\/)/i.test(html)) {
+  if (
+    /(?:href|src)="\/(?!\/)/i.test(html) ||
+    html.includes('"/assets/') ||
+    html.includes("'/assets/") ||
+    html.includes("(/assets/")
+  ) {
     throw new Error("Static output contains a root-relative asset URL.");
   }
 
