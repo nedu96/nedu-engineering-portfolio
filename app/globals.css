@@ -331,9 +331,9 @@ h1 em {
 
 .radar-node {
   position: absolute;
-  z-index: 3;
-  width: 34px;
-  height: 34px;
+  z-index: 8;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -446,10 +446,10 @@ h1 em {
 .signal-readout {
   position: absolute;
   z-index: 5;
-  right: -18px;
-  bottom: 12px;
-  width: min(365px, 72%);
-  padding: 22px 24px 21px;
+  right: -8px;
+  bottom: 22px;
+  width: min(315px, 64%);
+  padding: 16px 18px;
   border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--fine-line));
   background: color-mix(in srgb, var(--surface) 93%, transparent);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
@@ -460,10 +460,10 @@ h1 em {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 12px;
   color: var(--muted);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 650;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -484,39 +484,39 @@ h1 em {
 }
 
 .signal-readout h2 {
-  max-width: 300px;
-  margin: 18px 0 10px;
+  max-width: 270px;
+  margin: 12px 0 7px;
   color: var(--accent-2);
-  font-size: 23px;
+  font-size: 19px;
   font-weight: 660;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.035em;
 }
 
 .signal-readout > p {
-  margin-bottom: 17px;
+  margin-bottom: 11px;
   color: color-mix(in srgb, var(--ink) 82%, transparent);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .signal-flow {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 5px;
-  padding-block: 12px;
+  gap: 4px;
+  padding-block: 8px;
   border-block: 1px solid var(--fine-line);
 }
 
 .signal-flow span {
   position: relative;
-  min-height: 36px;
+  min-height: 30px;
   display: flex;
   align-items: center;
-  padding-right: 14px;
+  padding-right: 12px;
   color: var(--ink);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 620;
   line-height: 1.25;
 }
@@ -534,7 +534,7 @@ h1 em {
   align-items: baseline;
   justify-content: space-between;
   gap: 14px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .signal-proof span {
@@ -554,21 +554,27 @@ h1 em {
 .signal-readout ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 15px 0 0;
+  gap: 0;
+  margin: 9px 0 0;
   padding: 0;
   list-style: none;
 }
 
 .signal-readout li {
-  padding: 6px 8px;
-  border: 1px solid var(--fine-line);
+  padding: 0;
+  border: 0;
   color: color-mix(in srgb, var(--ink) 82%, transparent);
   font-family: var(--font-geist-mono), monospace;
   font-size: 10px;
   font-weight: 650;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+.signal-readout li + li::before {
+  content: "·";
+  margin-inline: 7px;
+  color: var(--accent);
 }
 
 .system-hint {
@@ -1336,7 +1342,8 @@ h1 em {
     right: auto;
     bottom: auto;
     width: 100%;
-    margin-top: -46px;
+    margin-top: -34px;
+    padding: 18px 20px;
   }
 
   .system-hint {
@@ -1347,11 +1354,11 @@ h1 em {
 
   .signal-readout h2 {
     max-width: none;
-    font-size: 24px;
+    font-size: 21px;
   }
 
   .signal-readout > p {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .proof-strip {
