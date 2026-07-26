@@ -129,6 +129,10 @@ const experience = [
     period: "2022 — Present",
     role: "Software Engineer",
     company: "Trelleborg Marine Systems",
+    website: {
+      label: "Trelleborg Marine & Infrastructure",
+      url: "https://www.trelleborg.com/en/marine-and-infrastructure/products-solutions-and-services/marine/docking-and-mooring",
+    },
     summary:
       "Building and supporting maritime docking and mooring software used by ports globally. I own integrations from physical sensors through backend processing, messaging, data storage and operator interfaces.",
     highlights: [
@@ -141,6 +145,10 @@ const experience = [
     period: "2020 — 2021",
     role: "Research Assistant · Human–Robot Interaction",
     company: "Monash University",
+    website: {
+      label: "Monash Robotics · Human–Robot Interaction",
+      url: "https://www.monash.edu/engineering/robotics/projects/research-topics/human-robot-interaction",
+    },
     summary:
       "Programmed Fetch and Pepper robots with ROS and developed human–robot interaction experiments. I created Gazebo virtual environments from spatial data, spawned and configured robot models for repeatable testing, and built telemetry interfaces with cloud simulation through AWS RoboMaker.",
     highlights: [
@@ -153,6 +161,7 @@ const experience = [
     period: "2017 — 2019",
     role: "Software Developer",
     company: "Spectrum7 Technologies",
+    website: null,
     summary:
       "Built an IoT telemetry pipeline for commercial coffee machines. Raspberry Pi devices retrieved machine data, Python services published it through AWS-backed infrastructure, and a Django dashboard gave users a clear operational view.",
     highlights: [
@@ -410,6 +419,16 @@ export default function Home() {
                 <div className="timeline-role">
                   <h3>{item.role}</h3>
                   <p>{item.company}</p>
+                  {item.website && (
+                    <a
+                      className="timeline-website"
+                      href={item.website.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {item.website.label} <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
                 </div>
                 <div className="timeline-detail">
                   <p>{item.summary}</p>
@@ -514,7 +533,7 @@ export default function Home() {
             <div className="contact-links" aria-label="Contact details">
               <a href="tel:+61402429024">
                 <span>Mobile</span>
-                <strong>0402 429 024</strong>
+                <strong>+61 402 429 024</strong>
                 <b aria-hidden="true">Call ↗</b>
               </a>
               <a href="mailto:nedu1996@gmail.com">
