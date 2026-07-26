@@ -45,6 +45,6 @@ it with GitHub Pages. The generated site is published by
 
 ## Contact
 
-- Mobile: [0402 429 024](tel:+61402429024)
+- Mobile: [+61 402 429 024](tel:+61402429024)
 - Email: [nedu1996@gmail.com](mailto:nedu1996@gmail.com)
 - LinkedIn: [linkedin.com/in/nedunchezia-pandia-rajan](https://www.linkedin.com/in/nedunchezia-pandia-rajan)
