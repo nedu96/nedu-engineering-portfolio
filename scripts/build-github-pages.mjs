@@ -72,7 +72,7 @@ async function validateOutput() {
     ["portfolio title", /Nedu Anandarajan/],
     ["robotics work", /ROS programming for Fetch and Pepper/],
     ["coffee telemetry work", /Raspberry Pi edge integration/],
-    ["mobile number", /0402 429 024/],
+    ["international mobile number", /\+61 402 429 024/],
     ["LinkedIn profile", /linkedin\.com\/in\/nedunchezia-pandia-rajan/],
     ["relative assets", /href="\.\/assets\//],
     [
