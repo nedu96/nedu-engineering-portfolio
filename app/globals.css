@@ -847,6 +847,30 @@ h1 em {
   font-weight: 620;
 }
 
+.timeline-website {
+  width: fit-content;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 13px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  color: color-mix(in srgb, var(--ink) 78%, transparent);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  font-weight: 620;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.timeline-website:hover,
+.timeline-website:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 .timeline-detail > p {
   margin-bottom: 22px;
   color: color-mix(in srgb, var(--ink) 86%, transparent);
